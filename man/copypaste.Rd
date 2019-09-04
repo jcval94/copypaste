@@ -8,6 +8,8 @@ copypaste(header = TRUE, ...)
 }
 \arguments{
 \item{header}{parameter to be given to read.table function}
+
+\item{...}{extra parameters to be given to read.table function}
 }
 \value{
 A data frame object called "new_df" in .GlobalEnv, if the user closes the notepad the data won't be read or after 15 seconds

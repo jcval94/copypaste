@@ -1,9 +1,13 @@
 #' A function to import excel files as quickly as possible, the use of Addins is also highly recommended
 #'
 #' @param header parameter to be given to read.table function
+#' @param ... extra parameters to be given to read.table function
 #'
 #' @return A data frame object called "new_df" in .GlobalEnv, if the user closes the notepad the data won't be read or after 15 seconds
 #' @export
+#'
+#' @importFrom utils read.table
+#'
 #'
 #' @examples
 #'
@@ -27,7 +31,8 @@ copypaste<-function(header=TRUE,...){
     open<-file.info("Paste.txt")$mtime
     time<-time+1
   }
-  suppressWarnings(try(assign("new_df",read.table("Paste.txt",sep="\t",header = header,...),.GlobalEnv)
+  suppressWarnings(try(expr = assign(x = "new_df",
+                              value = utils::read.table(file = "Paste.txt",sep="\t",header = header,...),envir = .GlobalEnv)
                        ,silent = TRUE))
   unlink('Paste.txt')
 }
