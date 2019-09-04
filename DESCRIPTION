@@ -1,0 +1,15 @@
+Package: copypaste
+Type: Package
+Title: Read copyed data into R's Global Enviroment
+Version: 1.0.0
+Author: José Carlos Del Valle <jcval94@gmail.com>
+Maintainer: José Carlos Del Valle <jcval94@gmail.com>
+Description: Read excel, google sheets or any copyed data (table) separeted by tabs by creating and opening a notepad file whose content will be automatically read after saving the file. The use of Addins is highly recommended as a shortcut
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 3.1.0)
+Imports: 
+RoxygenNote: 6.1.1
+URL: https://github.com/jcval94/copypaste
+BugReports: https://github.com/jcval94/copypaste/issues
