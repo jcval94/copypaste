@@ -10,11 +10,10 @@
 #' @importFrom rstudioapi getActiveDocumentContext
 #'
 #'
-#'
 #' @examples
 #'
-#' #Copy (Ctrl+C) an/a excel/google sheets table
-#'
+#' #Copy (Ctrl+C) a excel/google sheets/ online table such as:
+#' #https://en.wikipedia.org/wiki/Standard_normal_table
 #'
 #' #Run
 #' #copypaste()
