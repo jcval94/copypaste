@@ -25,7 +25,8 @@
 #' #new_df
 #'
 copypaste<-function(header=TRUE,...){
-  if (!is.null(rstudioapi::getActiveDocumentContext())){
+  ctx<-rstudioapi::getActiveDocumentContext()
+  if (!is.null(ctx)){
     base::writeLines("","Paste.txt")
     file.show('Paste.txt')
     open1<-open<-file.info("Paste.txt")$mtime
