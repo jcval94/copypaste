@@ -24,7 +24,7 @@
 #' #Check your data
 #' #new_df
 #'
-copypaste<-function(header=TRUE,...){
+copypaste<-function(hdr=TRUE,...){
   ctx<-rstudioapi::getActiveDocumentContext()
   if (!is.null(ctx)){
     base::writeLines("","Paste.txt")
@@ -37,10 +37,12 @@ copypaste<-function(header=TRUE,...){
       time<-time+1
     }
     assign_to_global <- function(pos=1,header,...){
-      assign("new_df", utils::read.table(file = "Paste.txt",sep="\t",header = header,...), envir=as.environment(pos) )
+      df<-utils::read.table(file = "Paste.txt",sep="\t",header = hdr,...)
+      assign("new_df", df, envir=as.environment(pos) )
     }
-    suppressWarnings(try(expr = assign_to_global()
+    sMSG<-suppressWarnings(try(expr = assign_to_global()
                          ,silent = TRUE))
+    print(sMSG)
     unlink('Paste.txt')
   }
 }

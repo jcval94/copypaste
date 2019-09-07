@@ -1,0 +1,4 @@
+Name: Copy Paste
+Description: Open a txt and read the content into R's enviroment
+Binding: copypaste
+Interactive: false
