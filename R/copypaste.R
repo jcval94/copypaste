@@ -26,13 +26,15 @@ copypaste<-function(header=TRUE,...){
   file.show('Paste.txt')
   open1<-open<-file.info("Paste.txt")$mtime
   time<-0
-  while(open1==open | time < 60){
+  while(open1==open & time < 60){
     Sys.sleep(1/4)
     open<-file.info("Paste.txt")$mtime
     time<-time+1
   }
-  suppressWarnings(try(expr = assign(x = "new_df",
-                              value = utils::read.table(file = "Paste.txt",sep="\t",header = header,...),envir = .GlobalEnv)
+  assign_to_global <- function(pos=1,header,...){
+    assign("new_df", utils::read.table(file = "Paste.txt",sep="\t",header = header,...), envir=as.environment(pos) )
+  }
+  suppressWarnings(try(expr = assign_to_global()
                        ,silent = TRUE))
   unlink('Paste.txt')
 }
