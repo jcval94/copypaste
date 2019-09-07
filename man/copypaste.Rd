@@ -19,14 +19,15 @@ A function to import excel files as quickly as possible, the use of Addins is al
 }
 \examples{
 
-#Copy an/a excel/google sheets table
+#Copy (Ctrl+C) an/a excel/google sheets table
+
 
 #Run
-#copypaste()
+copypaste()
 
-#Save and close your notepad file
+#Paste (Ctrl+V) int the notepad, save and close your notepad file
 
 #Check your data
-#new_df
+new_df
 
 }

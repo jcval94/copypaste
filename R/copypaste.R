@@ -14,19 +14,15 @@
 #' @examples
 #'
 #' #Copy (Ctrl+C) an/a excel/google sheets table
-#' a
-#' e
-#' i
-#' o
-#' u
+#'
 #'
 #' #Run
-#' copypaste()
+#' #copypaste()
 #'
 #' #Paste (Ctrl+V) int the notepad, save and close your notepad file
 #'
 #' #Check your data
-#' new_df
+#' #new_df
 #'
 copypaste<-function(header=TRUE,...){
   if (!is.null(rstudioapi::getActiveDocumentContext())){
