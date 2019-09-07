@@ -7,34 +7,43 @@
 #' @export
 #'
 #' @importFrom utils read.table
+#' @importFrom rstudioapi getActiveDocumentContext
+#'
 #'
 #'
 #' @examples
 #'
-#' #Copy an/a excel/google sheets table
+#' #Copy (Ctrl+C) an/a excel/google sheets table
+#' a
+#' e
+#' i
+#' o
+#' u
 #'
 #' #Run
-#' #copypaste()
+#' copypaste()
 #'
-#' #Save and close your notepad file
+#' #Paste (Ctrl+V) int the notepad, save and close your notepad file
 #'
 #' #Check your data
-#' #new_df
+#' new_df
 #'
 copypaste<-function(header=TRUE,...){
-  base::writeLines("","Paste.txt")
-  file.show('Paste.txt')
-  open1<-open<-file.info("Paste.txt")$mtime
-  time<-0
-  while(open1==open & time < 60){
-    Sys.sleep(1/4)
-    open<-file.info("Paste.txt")$mtime
-    time<-time+1
+  if (!is.null(rstudioapi::getActiveDocumentContext())){
+    base::writeLines("","Paste.txt")
+    file.show('Paste.txt')
+    open1<-open<-file.info("Paste.txt")$mtime
+    time<-0
+    while(open1==open & time < 60){
+      Sys.sleep(1/4)
+      open<-file.info("Paste.txt")$mtime
+      time<-time+1
+    }
+    assign_to_global <- function(pos=1,header,...){
+      assign("new_df", utils::read.table(file = "Paste.txt",sep="\t",header = header,...), envir=as.environment(pos) )
+    }
+    suppressWarnings(try(expr = assign_to_global()
+                         ,silent = TRUE))
+    unlink('Paste.txt')
   }
-  assign_to_global <- function(pos=1,header,...){
-    assign("new_df", utils::read.table(file = "Paste.txt",sep="\t",header = header,...), envir=as.environment(pos) )
-  }
-  suppressWarnings(try(expr = assign_to_global()
-                       ,silent = TRUE))
-  unlink('Paste.txt')
 }
