@@ -42,7 +42,7 @@ copypaste<-function(hdr=TRUE,...){
     }
     sMSG<-suppressWarnings(try(expr = assign_to_global()
                          ,silent = TRUE))
-    print(sMSG)
+    print(head(sMSG))
     unlink('Paste.txt')
   }
 }
