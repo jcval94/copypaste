@@ -1,6 +1,6 @@
 Package: copypaste
 Type: Package
-Title: Read copyed data into R's Global Enviroment
+Title: Read copyed data into R's Global Enviroment with Addins
 Version: 1.0.0
 Author: José Carlos Del Valle <jcval94@gmail.com>
 Maintainer: José Carlos Del Valle <jcval94@gmail.com>
@@ -8,7 +8,7 @@ Description: Read excel, google sheets or any copyed data (table) separeted by t
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Depends: R (>= 3.1.0)
+Depends: R (>= 3.2.0), rstudioapi
 Imports: utils
 RoxygenNote: 6.1.1
 URL: https://github.com/jcval94/copypaste
