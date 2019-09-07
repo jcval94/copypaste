@@ -31,22 +31,19 @@ browser, excel, google sheets, etc.
 
 ``` r
 library(copypaste)
+#> Loading required package: rstudioapi
 ## Not run
 # copypaste()
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+Check your data with new\_df
 
 ``` r
 new_df
 #> data frame with 0 columns and 0 rows
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date.
-
-You can also embed plots, for example:
+You can also change read.table parameters, for example:
 
     #> data frame with 0 columns and 0 rows
 

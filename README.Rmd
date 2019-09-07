@@ -45,7 +45,7 @@ library(copypaste)
 # copypaste()
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+Check your data with new_df
 ```{r datan,echo=FALSE}
 new_df<-data.frame()
 ```
@@ -55,9 +55,7 @@ new_df<-data.frame()
 new_df
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
-
-You can also embed plots, for example:
+You can also change read.table parameters, for example:
 
 ```{r pressure, echo = FALSE}
 # copypaste(header = FALSE)
@@ -65,5 +63,4 @@ new_df
 ```
 
 Also you can use Addins to create a shortcut and be faster:
-
 
