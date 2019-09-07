@@ -16,6 +16,8 @@ You can install the released version of copypaste from
 
 ``` r
 install.packages("copypaste")
+# or
+remotes::install_git("https://git.rud.is/jcval94/copypaste.git")
 ```
 
 ## Example
