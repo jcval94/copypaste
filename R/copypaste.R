@@ -8,7 +8,7 @@
 #'
 #' @importFrom utils read.table
 #' @importFrom rstudioapi getActiveDocumentContext
-#'
+#' @importFrom utils head
 #'
 #' @examples
 #'
