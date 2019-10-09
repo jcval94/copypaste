@@ -19,8 +19,8 @@ A function to import excel files as quickly as possible, the use of Addins is al
 }
 \examples{
 
-#Copy (Ctrl+C) an/a excel/google sheets table
-
+#Copy (Ctrl+C) a excel/google sheets/ online table such as:
+#https://en.wikipedia.org/wiki/Standard_normal_table
 
 #Run
 #copypaste()
