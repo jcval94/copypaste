@@ -8,11 +8,11 @@
 #' rnorm(n=100)
 #'
 #'
-#' n=100;mean=1,sd=0
+#' n=100;mean=1;sd=0
 #'
 #'
 r.args<-function(){
-  ctx <- rstudioapi::getActiveDocumentContext()
+  ctx <<- rstudioapi::getActiveDocumentContext()
   if (!is.null(ctx)) {
     if (ctx$selection[[1]]$text != "") {
 
@@ -20,14 +20,16 @@ r.args<-function(){
                                stringsAsFactors = FALSE, header = FALSE)
       bits <- unlist(bits, use.names = FALSE)
       #REMOVE PARENTHESIS
+      print(bits)
       fun<-strsplit(bits,split = "[(]")[[1]]
       if(length(fun)>2){
         fun[2]<-paste0(fun[-1],collapse = "(")
         fun<-fun[1:2]
       }
       fun[2]<-gsub(" ","",gsub("\n","",fun[2]))
-      EVALU<-eval(parse(text = fun[1]))
-      if(is.function(EVALU)){
+      if(exists(fun[1])){
+        EVALU<-eval(parse(text = fun[1]))
+        if(is.function(EVALU)){
         comp_args<-formals(fun)
         args<-names(comp_args)
         args<-args[args != "..."]
@@ -88,7 +90,8 @@ r.args<-function(){
           run<-(paste0(run[[2]],collapse=";"))
           run<-paste0(run,"\n")
           rstudioapi::modifyRange(ctx$selection[[1]]$range,
-                                  run)
+                                  paste0(bits,run))
+        }
         }
       }
     }
