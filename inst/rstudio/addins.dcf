@@ -2,3 +2,8 @@ Name: Copy Paste
 Description: Open a txt and read the content into R's enviroment
 Binding: copypaste
 Interactive: false
+
+Name: Read Arguments
+Description: Open a txt and read the content into R's enviroment
+Binding: r.args
+Interactive: false
