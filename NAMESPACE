@@ -3,4 +3,5 @@
 export(copypaste)
 export(r.args)
 importFrom(rstudioapi,getActiveDocumentContext)
+importFrom(utils,head)
 importFrom(utils,read.table)

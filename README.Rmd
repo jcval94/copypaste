@@ -79,7 +79,7 @@ new_df<-data.frame()
 
 ```
 
-You can also change read.table parameters, for example:
+You can also change read.table parameters, e.g.
 
 ```{r pressure, echo = FALSE}
 # copypaste(header = FALSE)

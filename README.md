@@ -65,7 +65,7 @@ Check your data with new\_df
 # 10 0.33147 0.33398 0.33646 0.33891
 ```
 
-You can also change read.table parameters, for example:
+You can also change read.table parameters, e.g.
 
     #> data frame with 0 columns and 0 rows
 
