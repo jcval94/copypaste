@@ -7,7 +7,6 @@
 #'
 #' rnorm(n=100)
 #'
-#'
 #' n=100;mean=1;sd=0
 #'
 #'
@@ -15,12 +14,11 @@ r.args<-function(){
   ctx <<- rstudioapi::getActiveDocumentContext()
   if (!is.null(ctx)) {
     if (ctx$selection[[1]]$text != "") {
-
       bits <- utils::read.csv(text = ctx$selection[[1]]$text,
                                stringsAsFactors = FALSE, header = FALSE)
       bits <- unlist(bits, use.names = FALSE)
       #REMOVE PARENTHESIS
-      print(bits)
+      #print(bits)
       fun<-strsplit(bits,split = "[(]")[[1]]
       if(length(fun)>2){
         fun[2]<-paste0(fun[-1],collapse = "(")
@@ -51,8 +49,10 @@ r.args<-function(){
           for(i in 1:length(c1)){ss<-c()
             for(k in 1:(length(p1))){
               app<-c1[i]>p1[k] & c1[i] <p2[k]
-              ss<-c(ss,app)}
-            ss2<-c(ss2,any(ss))}
+              ss<-c(ss,app)
+              }
+            ss2<-c(ss2,any(ss))
+          }
           sr[c1[ss2]]<-"?"
           fun[2]<-paste0(sr,collapse = "")
 
@@ -61,12 +61,10 @@ r.args<-function(){
           values<-gsub("==","?",values)
           values2<-strsplit(values,"=")
           values2<-sapply(values2,function(x){gsub("[?]","==",x)})
-
           len_val<-sapply(values2,length)
           cond<-len_val==2
           args_writ<-sapply(values2,function(x){x[[1]][1]})[cond]
           args_no_escritos<-args[!args %in% args_writ]
-          #args_tofill<-args_no_escritos[!args_no_escritos %in% args_predef]
           pred<-data.frame(A=args_predef,B=args_n)
           writ<-data.frame(A=args_writ,B=values[cond])
           if(length(args_no_escritos)==length(values[!cond])){
@@ -76,17 +74,13 @@ r.args<-function(){
               if(length(values[!cond])>0){
                 extr<-data.frame(A=args_no_escritos[!cond],B=paste0(args_no_escritos[!cond],"=",values[!cond]))
               }
-
           }
           if(length(values[!cond])>0){
             we<-rbind(writ,extr)
           }else{we<-writ}
-
           run<-(rbind(we,pred[!pred[[1]] %in% we[[1]],]))
           levels(run[[1]])<-args
           run<-run[order(run[[1]]),]
-
-          #print(bits)
           run<-(paste0(run[[2]],collapse=";"))
           run<-paste0(run,"\n")
           rstudioapi::modifyRange(ctx$selection[[1]]$range,
