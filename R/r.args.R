@@ -12,9 +12,10 @@ r.args<-function(){
   ctx <<- rstudioapi::getActiveDocumentContext()
   if (!is.null(ctx)) {
     if (ctx$selection[[1]]$text != "") {
-      bits <- utils::read.csv(text = ctx$selection[[1]]$text,
-                               stringsAsFactors = FALSE, header = FALSE)
-      bits <- unlist(bits, use.names = FALSE)
+      bits<-ctx$selection[[1]]$text
+      # bits <- utils::read.csv(text = ctx$selection[[1]]$text,
+      #                          stringsAsFactors = FALSE, header = FALSE)
+      # bits <- unlist(bits, use.names = FALSE)
       #REMOVE PARENTHESIS
       #print(bits)
       fun<-strsplit(bits,split = "[(]")[[1]]
@@ -70,9 +71,11 @@ r.args<-function(){
           if(length(args_no_escritos)==length(values[!cond])){
             extr<-data.frame(A=args_no_escritos,B=paste0(args_no_escritos,"=",values[!cond]))
           }else{
-            args_no_escritos<-args_no_escritos[1:length(values[!cond])]
+            valores_sin_arg<-values[!cond]
+            # args_no_escritos<-args_no_escritos[1:(length(args)-length(values[!cond]))]
+            arg_rellenados<-args_no_escritos[1:length(valores_sin_arg)]
               if(length(values[!cond])>0){
-                extr<-data.frame(A=args_no_escritos[!cond],B=paste0(args_no_escritos[!cond],"=",values[!cond]))
+                extr<-data.frame(A=arg_rellenados,B=paste0(arg_rellenados,"=",valores_sin_arg))
               }
           }
           if(length(values[!cond])>0){
@@ -82,7 +85,7 @@ r.args<-function(){
           levels(run[[1]])<-args
           run<-run[order(run[[1]]),]
           run<-(paste0(run[[2]],collapse=";"))
-          run<-paste0(run,"\n")
+          # run<-paste0(run,"\n")
           rstudioapi::modifyRange(ctx$selection[[1]]$range,
                                   paste0(bits,"\n",run))
         }
