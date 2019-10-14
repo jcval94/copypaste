@@ -16,7 +16,6 @@ Write the arguments of a function selected
 
 rnorm(n=100)
 
-
 n=100;mean=1;sd=0
 
 
