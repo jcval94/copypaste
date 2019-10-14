@@ -63,20 +63,24 @@ r.args<-function(){
           cond<-len_val==2
           values2<-sapply(values2,function(x){gsub("[?]","==",x)})
           if(class(values2)=="matrix"){args_writ<-values2[1,1]}else{
-            args_writ<-as.character(sapply(values2,function(x){x[[1]][1]})[cond])
+            args_writ<-as.character(sapply(values2[1,],function(x){x[[1]][1]})[cond])
           }
+          args_writ<-values2[1,]
           args_no_escritos<-args[!args %in% args_writ]
           pred<-data.frame(A=args_predef,B=args_n)
           writ<-data.frame(A=args_writ,B=values[cond])
+          extr<-writ[-(1:nrow(writ)),]
           if(length(args_no_escritos)==length(values[!cond])){
             extr<-data.frame(A=args_no_escritos,B=paste0(args_no_escritos,"=",values[!cond]))
           }else{
             valores_sin_arg<-values[!cond]
-            # args_no_escritos<-args_no_escritos[1:(length(args)-length(values[!cond]))]
-            arg_rellenados<-args_no_escritos[1:length(valores_sin_arg)]
+            if(length(valores_sin_arg)!=0){
+              arg_rellenados<-args_no_escritos[1:length(valores_sin_arg)]
               if(length(values[!cond])>0){
                 extr<-data.frame(A=arg_rellenados,B=paste0(arg_rellenados,"=",valores_sin_arg))
               }
+            }
+            # args_no_escritos<-args_no_escritos[1:(length(args)-length(values[!cond]))]
           }
           if(length(values[!cond])>0){
             we<-rbind(writ,extr)
