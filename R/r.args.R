@@ -61,11 +61,11 @@ r.args<-function(){
           values2<-strsplit(values,"=")
           len_val<-sapply(values2,length)
           cond<-len_val==2
+          values<-gsub("[?]","==",values)
           values2<-sapply(values2,function(x){gsub("[?]","==",x)})
-          if(class(values2)=="matrix"){args_writ<-values2[1,1]}else{
-            args_writ<-as.character(sapply(values2[1,],function(x){x[[1]][1]})[cond])
+          if(class(values2)=="matrix"){args_writ<-values2[1,]}else{
+            args_writ<-as.character(sapply(values2,function(x){x[[1]][1]})[cond])
           }
-          args_writ<-values2[1,]
           args_no_escritos<-args[!args %in% args_writ]
           pred<-data.frame(A=args_predef,B=args_n)
           writ<-data.frame(A=args_writ,B=values[cond])
