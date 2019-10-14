@@ -1,5 +1,3 @@
-#' Write the arguments of a function selected
-#'
 #' @return arguments ready to run
 #' @export
 #'
@@ -60,10 +58,12 @@ r.args<-function(){
           values<-gsub("[?]",",",values)
           values<-gsub("==","?",values)
           values2<-strsplit(values,"=")
-          values2<-sapply(values2,function(x){gsub("[?]","==",x)})
           len_val<-sapply(values2,length)
           cond<-len_val==2
-          args_writ<-sapply(values2,function(x){x[[1]][1]})[cond]
+          values2<-sapply(values2,function(x){gsub("[?]","==",x)})
+          if(class(values2)=="matrix"){args_writ<-values2[1,1]}else{
+            args_writ<-as.character(sapply(values2,function(x){x[[1]][1]})[cond])
+          }
           args_no_escritos<-args[!args %in% args_writ]
           pred<-data.frame(A=args_predef,B=args_n)
           writ<-data.frame(A=args_writ,B=values[cond])
@@ -84,7 +84,7 @@ r.args<-function(){
           run<-(paste0(run[[2]],collapse=";"))
           run<-paste0(run,"\n")
           rstudioapi::modifyRange(ctx$selection[[1]]$range,
-                                  paste0(bits,run))
+                                  paste0(bits,"\n",run))
         }
         }
       }
