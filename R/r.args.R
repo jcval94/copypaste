@@ -1,3 +1,4 @@
+#' Write all arguments and its values from a function
 #' @return arguments ready to run
 #' @export
 #'
