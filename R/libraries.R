@@ -1,9 +1,14 @@
 #' compile all libraries in a ".R" file, even if is not installed
 #'
-#' @return
+#' @return libraries compiled
 #' @export
 #'
 #' @examples
+#'
+#' library(stats)
+#'
+#' libraries()
+#'
 libraries<-function(){
   ctx<-rstudioapi::getActiveDocumentContext()
   if (!is.null(ctx)){
