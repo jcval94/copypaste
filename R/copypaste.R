@@ -1,7 +1,6 @@
 #' A function to import excel files as quickly as possible, the use of Addins is also highly recommended
 #'
-#' @param header parameter to be given to read.table function
-#' @param ... extra parameters to be given to read.table function
+#' @param ... extra parameters to be given to read.table function (header = TRUE)
 #'
 #' @return A data frame object called "new_df" in .GlobalEnv, if the user closes the notepad the data won't be read or after 15 seconds
 #' @export
@@ -23,7 +22,7 @@
 #' #Check your data
 #' #new_df
 #'
-copypaste<-function(hdr=TRUE,...){
+copypaste<-function(...){
   ctx<-rstudioapi::getActiveDocumentContext()
   if (!is.null(ctx)){
     base::writeLines("","Paste.txt")
@@ -35,8 +34,8 @@ copypaste<-function(hdr=TRUE,...){
       open<-file.info("Paste.txt")$mtime
       time<-time+1
     }
-    assign_to_global <- function(pos=1,header,...){
-      df<-utils::read.table(file = "Paste.txt",sep="\t",header = hdr,...)
+    assign_to_global <- function(pos=1,...){
+      df<-utils::read.table(file = "Paste.txt",sep="\t",...)
       assign("new_df", df, envir=as.environment(pos) )
     }
     sMSG<-suppressWarnings(try(expr = assign_to_global()

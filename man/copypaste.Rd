@@ -4,12 +4,10 @@
 \alias{copypaste}
 \title{A function to import excel files as quickly as possible, the use of Addins is also highly recommended}
 \usage{
-copypaste(hdr = TRUE, ...)
+copypaste(...)
 }
 \arguments{
-\item{...}{extra parameters to be given to read.table function}
-
-\item{header}{parameter to be given to read.table function}
+\item{...}{extra parameters to be given to read.table function (header = TRUE)}
 }
 \value{
 A data frame object called "new_df" in .GlobalEnv, if the user closes the notepad the data won't be read or after 15 seconds
