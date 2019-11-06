@@ -7,7 +7,7 @@
 
 <!-- badges: end -->
 
-The goal of copypaste is to accelate copyed data reading in R
+The goal of copypaste is to accelerate copyed data reading in R
 
 ## Installation
 
@@ -20,7 +20,9 @@ install.packages("copypaste")
 remotes::install_git("https://github.com/jcval94/copypaste.git")
 ```
 
-## Example
+## Examples
+
+### copypaste
 
 This is a basic example which shows you how to solve a common problem:
 
@@ -35,6 +37,8 @@ library(copypaste)
 ## Not run
 # copypaste()
 ```
+
+Now paste the table into the notepad and save it (Ctrl + S)
 
 Check your data with new\_df
 
@@ -65,8 +69,37 @@ Check your data with new\_df
 # 10 0.33147 0.33398 0.33646 0.33891
 ```
 
-You can also change read.table parameters, e.g.
+### r.args
 
-    #> data frame with 0 columns and 0 rows
+Furthermore, r.args function returns all the arguments of a function in
+the next line of code
 
-Also you can use Addins to create a shortcut and be faster:
+Select text string of a function in the R Script and run:
+
+``` r
+
+# r.args()
+# 
+# rnorm(n=32)
+# n=32;mean=0;sd=1
+# 
+# rnorm(n=32.3)
+# n=32.3;mean=0;sd=1
+# 
+# rnorm(n=1+1)
+# n=1+1;mean=0;sd=1
+```
+
+### libraries
+
+Finally, libraries() function run all libraries written in a R Script
+(and installs the package if it does not exist)
+
+``` r
+
+# libraries()
+# 
+# library(stats)
+```
+
+Also you can use Addins to create a shortcut and be faster

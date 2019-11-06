@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of copypaste is to accelate copyed data reading in R
+The goal of copypaste is to accelerate copyed data reading in R
 
 ## Installation
 
@@ -29,7 +29,9 @@ install.packages("copypaste")
 remotes::install_git("https://github.com/jcval94/copypaste.git")
 ```
 
-## Example
+## Examples
+
+### copypaste
 
 This is a basic example which shows you how to solve a common problem:
 
@@ -44,6 +46,8 @@ library(copypaste)
 ## Not run
 # copypaste()
 ```
+
+Now paste the table into the notepad and save it (Ctrl + S)
 
 Check your data with new_df
 ```{r datan,echo=FALSE}
@@ -79,12 +83,41 @@ new_df<-data.frame()
 
 ```
 
-You can also change read.table parameters, e.g.
+### r.args
 
-```{r pressure, echo = FALSE}
-# copypaste(header = FALSE)
-new_df
+Furthermore, r.args function returns all the arguments of a function in the next line of code
+
+Select text string of a function in the R Script and run:
+
+
+```{r pressure}
+
+# r.args()
+# 
+# rnorm(n=32)
+# n=32;mean=0;sd=1
+# 
+# rnorm(n=32.3)
+# n=32.3;mean=0;sd=1
+# 
+# rnorm(n=1+1)
+# n=1+1;mean=0;sd=1
+
 ```
 
-Also you can use Addins to create a shortcut and be faster:
+### libraries
+
+Finally, libraries() function run all libraries written in a R Script (and installs the package if it does not exist)
+
+
+```{r libss}
+
+# libraries()
+# 
+# library(stats)
+
+
+```
+
+Also you can use Addins to create a shortcut and be faster
 
