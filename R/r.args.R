@@ -10,7 +10,7 @@
 #'
 #'
 r.args<-function(){
-  ctx <<- rstudioapi::getActiveDocumentContext()
+  ctx <- rstudioapi::getActiveDocumentContext()
   if (!is.null(ctx)) {
     if (ctx$selection[[1]]$text != "") {
       bits<-ctx$selection[[1]]$text

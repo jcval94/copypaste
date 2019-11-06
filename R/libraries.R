@@ -3,11 +3,14 @@
 #' @return libraries compiled
 #' @export
 #'
+#' @importFrom utils install.packages
+#' @importFrom utils installed.packages
+#'
 #' @examples
 #'
 #' library(stats)
 #'
-#' libraries()
+#' #libraries()
 #'
 libraries<-function(){
   ctx<-rstudioapi::getActiveDocumentContext()
